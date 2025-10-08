@@ -9,19 +9,14 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserAuthorizationRequest extends FormRequest
 {
-    /**
-     * Разрешаем всем делать этот запрос (можно поставить логику авторизации, если нужно)
-     */
     public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Правила валидации для авторизации
-     * Обычно это email и пароль
      *
-     * @return array<string, ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array|string>
      */
 
     public function rules(): array
@@ -33,7 +28,6 @@ class UserAuthorizationRequest extends FormRequest
     }
 
     /**
-     * Кастомные сообщения об ошибках
      *
      * @return string[]
      */

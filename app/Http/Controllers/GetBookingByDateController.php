@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class GetBookingByDateController extends Controller
 {
 
-    public function get(Request $request)
+    public function get(Request $request): JsonResponse
     {
         $date = $request->query('date');
         $saunaId = $request->query('sauna_id');
@@ -25,6 +26,5 @@ class GetBookingByDateController extends Controller
 
         return response()->json(['bookings' => $bookings]);
     }
-
 }
 

@@ -8,14 +8,11 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class SaunaResource extends JsonResource
 {
     /**
-     * Преобразует модель в массив для JSON-ответа.
-     *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray(Request $request): array
     {
-
         JsonResource::withoutWrapping();
 
         return [

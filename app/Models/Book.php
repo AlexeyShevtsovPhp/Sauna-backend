@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Book extends Model
 {
@@ -15,4 +16,10 @@ class Book extends Model
         'start_time',
         'end_time',
     ];
+
+    public function sauna(): BelongsTo
+    {
+        return $this->belongsTo(Sauna::class, 'sauna_id');
+    }
 }
+

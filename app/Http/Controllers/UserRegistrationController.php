@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Resources\UserRegistrationResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Random\RandomException;
 
@@ -21,8 +19,6 @@ class UserRegistrationController extends Controller
     /**
      * @throws ValidationException
      * @throws RandomException
-     */
-    /**
      * @param UserRegistrationRequest $request
      * @return JsonResponse
      */

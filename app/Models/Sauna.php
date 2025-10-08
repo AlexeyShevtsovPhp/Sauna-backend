@@ -19,5 +19,4 @@ class Sauna extends Model
     public $timestamps = false;
 
     public const PER_PAGE = 10;
-
 }

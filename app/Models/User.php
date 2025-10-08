@@ -63,10 +63,15 @@ class User extends Authenticatable
         /** @var self $user */
         $user = Auth::user();
 
-        $filename = uniqid('avatar_') . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('images/avatars'), $filename);
+        $extension = $file->getClientOriginalExtension();
+        $fileHash = md5(file_get_contents($file->getRealPath()));
+        $filePath = public_path('images/avatars/' . $fileHash . '.' . $extension);
 
-        $user->avatar = url("images/avatars/{$filename}");
+        if (!file_exists($filePath)) {
+            $file->move(public_path('images/avatars'), $fileHash . '.' . $extension);
+        }
+        $user->avatar = url("images/avatars/{$fileHash}.{$extension}");
+
         $user->save();
     }
 }

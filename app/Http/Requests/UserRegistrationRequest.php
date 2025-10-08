@@ -9,19 +9,14 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRegistrationRequest extends FormRequest
 {
-    /**
-     * Разрешаем всем делать этот запрос (можно поставить логику авторизации, если нужно)
-     */
     public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Правила валидации для авторизации
-     * Обычно это email и пароль
      *
-     * @return array<string, ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array|string>
      */
 
     public function rules(): array
@@ -34,8 +29,6 @@ class UserRegistrationRequest extends FormRequest
     }
 
     /**
-     * Кастомные сообщения об ошибках
-     *
      * @return string[]
      */
     public function messages(): array
@@ -43,7 +36,7 @@ class UserRegistrationRequest extends FormRequest
         return [
             'name.required' => 'Логин обязателен для заполнения',
             'name.unique' => 'Данный указанный логин уже занят',
-            'email' => 'email обязателен для заполнения',
+            'email' => 'Некорректный email',
             'email.unique' => 'данный указанный email уже занят',
             'password.required' => 'Пароль обязателен для заполнения',
         ];

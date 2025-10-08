@@ -17,5 +17,4 @@ class GetSaunaInfoController extends Controller
             'data' => new SaunaInformationResource(Sauna::find($id)),
         ]);
     }
-
 }

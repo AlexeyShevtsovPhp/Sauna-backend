@@ -29,7 +29,6 @@ class StoreBookingRequest extends FormRequest
         return [
             'bookings' => 'required|array|min:1',
             'bookings.*.sauna_id' => 'required|integer|exists:saunas,id',
-            'bookings.*.user_id' => 'required|integer|exists:users,id',
             'bookings.*.start_time' => 'required|date_format:Y-m-d H:i:s',
             'bookings.*.end_time' => 'required|date_format:Y-m-d H:i:s|after:bookings.*.start_time',
         ];

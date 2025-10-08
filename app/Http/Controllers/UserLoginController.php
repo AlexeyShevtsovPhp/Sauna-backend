@@ -6,18 +6,17 @@ use App\Http\Resources\UserUpdateResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserLoginController extends Controller
 {
     public function login(UserAuthorizationRequest $request): JsonResponse
     {
-
         $user = User::where('name', $request->name)->first();
 
-        if (! $user || ! password_verify($request->password, $user->password)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+        if (!Auth::attempt($request->validated())) {
+            return response()->json(null, 401);
         }
-
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([

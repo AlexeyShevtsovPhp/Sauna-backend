@@ -10,7 +10,6 @@ use App\Models\Sauna;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 
-
 #[AllowDynamicProperties]
 class SaunaListController extends Controller
 {

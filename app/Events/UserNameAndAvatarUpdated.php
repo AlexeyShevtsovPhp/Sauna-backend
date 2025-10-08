@@ -16,7 +16,6 @@ class UserNameAndAvatarUpdated implements ShouldBroadcast
     public $avatar;
 
     /**
-     * Создание нового события.
      *
      * @param  int  $userId
      * @param  string  $name
@@ -31,7 +30,6 @@ class UserNameAndAvatarUpdated implements ShouldBroadcast
     }
 
     /**
-     * Канал, на который будет транслироваться событие.
      *
      * @return Channel
      */
