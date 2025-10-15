@@ -18,16 +18,10 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-
-        if (!$user || $user->role !== 'admin') {
-            if (str_contains($request->url(), 'monolit')) {
-                return redirect('/monolit/categories/1?page=1');
-            }
-
-            return redirect('/categories/1?page=1&category_id=1');
+        if (auth()->check() && auth()->user()->role === 'admin') {
+            return $next($request);
         }
 
-        return $next($request);
+        return response()->json(['message' => 'Forbidden'], 403);
     }
 }

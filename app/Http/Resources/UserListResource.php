@@ -12,7 +12,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property User $resource
  */
 
-class UserNameAndAvatarResource extends JsonResource
+class UserListResource extends JsonResource
 {
     /**
      * @param Request $request
@@ -24,9 +24,10 @@ class UserNameAndAvatarResource extends JsonResource
         JsonResource::withoutWrapping();
 
         return [
+            'id' => $this->resource->id,
             'name' => $this->resource->name,
             'avatar' => $this->resource->avatar,
-            'role' => $this->resource->role
+            'email' => $this->resource->email
         ];
     }
 }

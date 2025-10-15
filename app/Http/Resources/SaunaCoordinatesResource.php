@@ -4,15 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @property User $resource
- */
-
-class UserNameAndAvatarResource extends JsonResource
+class SaunaCoordinatesResource extends JsonResource
 {
     /**
      * @param Request $request
@@ -24,9 +19,8 @@ class UserNameAndAvatarResource extends JsonResource
         JsonResource::withoutWrapping();
 
         return [
-            'name' => $this->resource->name,
-            'avatar' => $this->resource->avatar,
-            'role' => $this->resource->role
+            'latitude' => $this->resource->latitude,
+            'longitude' => $this->resource->longitude
         ];
     }
 }

@@ -17,6 +17,11 @@ class UserLoginController extends Controller
         if (!Auth::attempt($request->validated())) {
             return response()->json(null, 401);
         }
+
+        if ($user->blocked) {
+            return response()->json(null, 403);
+        }
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SaunaCoordinatesResource;
 use App\Http\Resources\SaunaInformationResource;
 use App\Models\Sauna;
 use Illuminate\Http\JsonResponse;
@@ -16,5 +17,10 @@ class GetSaunaInfoController extends Controller
         return response()->json([
             'data' => new SaunaInformationResource(Sauna::find($id)),
         ]);
+    }
+
+    public function receive(int $id): JsonResponse
+    {
+        return response()->json(new SaunaCoordinatesResource(Sauna::find($id)));
     }
 }

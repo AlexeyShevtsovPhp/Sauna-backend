@@ -15,10 +15,18 @@ class SaunaResource extends JsonResource
     {
         JsonResource::withoutWrapping();
 
+        $pictures = json_decode($this->picture, true); // декодируем JSON в массив
+        $firstPicture = null;
+
+        if (is_array($pictures) && count($pictures) > 0) {
+            $firstPicture = $pictures[0];
+        }
+
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'picture' => $this->picture
+            'picture' => $firstPicture,  // только первая фотка
         ];
     }
+
 }

@@ -22,6 +22,15 @@ class GetProfileBookingController extends Controller
 
         return BookingProfileResource::collection($bookings)->response();
     }
+
+    public function book4Admin($userId): JsonResponse
+    {
+        $bookings = Book::with('sauna')
+            ->where('user_id', $userId)
+            ->get();
+
+        return BookingProfileResource::collection($bookings)->response();
+    }
 }
 
 

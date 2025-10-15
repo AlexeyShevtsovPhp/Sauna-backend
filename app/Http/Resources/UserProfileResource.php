@@ -32,6 +32,8 @@ class UserProfileResource extends JsonResource
             'phone' => $this->resource->phone,
             'address' => $this->resource->address,
             'avatar' => $this->resource->avatar,
+            'role' => $this->resource->role,
+            'blocked' => $this->resource->blocked
         ];
     }
 }
