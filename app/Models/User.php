@@ -13,13 +13,11 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
-    // ...
 
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     *
      * @var list<string>
      */
     protected $fillable = [
@@ -33,11 +31,10 @@ class User extends Authenticatable
         'avatar',
         'phone',
         'address',
+        'blocked'
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
      * @var list<string>
      */
     protected $hidden = [
@@ -46,8 +43,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
      * @return array<string, string>
      */
     protected function casts(): array
@@ -65,11 +60,11 @@ class User extends Authenticatable
 
         $extension = $file->getClientOriginalExtension();
         $fileHash = md5(file_get_contents($file->getRealPath()));
-        $filePath = public_path('images/avatars/' . $fileHash . '.' . $extension);
 
-        if (!file_exists($filePath)) {
+        if (!file_exists(public_path('images/avatars/' . $fileHash . '.' . $extension))) {
             $file->move(public_path('images/avatars'), $fileHash . '.' . $extension);
         }
+
         $user->avatar = url("images/avatars/{$fileHash}.{$extension}");
 
         $user->save();

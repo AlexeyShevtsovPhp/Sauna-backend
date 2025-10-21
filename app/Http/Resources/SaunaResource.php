@@ -14,8 +14,7 @@ class SaunaResource extends JsonResource
     public function toArray(Request $request): array
     {
         JsonResource::withoutWrapping();
-
-        $pictures = json_decode($this->picture, true); // декодируем JSON в массив
+        $pictures = json_decode($this->resource->picture, true);
         $firstPicture = null;
 
         if (is_array($pictures) && count($pictures) > 0) {
@@ -23,9 +22,9 @@ class SaunaResource extends JsonResource
         }
 
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'picture' => $firstPicture,  // только первая фотка
+            'id' => $this->resource->id,
+            'name' => $this->resource->name,
+            'picture' => $firstPicture,
         ];
     }
 

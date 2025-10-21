@@ -9,12 +9,12 @@ use Illuminate\Http\Response;
 class AvatarUploadController extends Controller
 {
     /**
-     * @param AvatarUploadRequest $request
+     * @param AvatarUploadRequest $avatarUploadRequest
      * @return Response
      */
-    public function upload(AvatarUploadRequest $request): Response
+    public function upload(AvatarUploadRequest $avatarUploadRequest): Response
     {
-        User::updateAvatar($request->file('avatar'));
+        User::updateAvatar($avatarUploadRequest->file('avatar'));
         return response()->noContent();
     }
 }

@@ -15,9 +15,7 @@ class SaunaCoordinatesResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
         JsonResource::withoutWrapping();
-
         return [
             'latitude' => $this->resource->latitude,
             'longitude' => $this->resource->longitude

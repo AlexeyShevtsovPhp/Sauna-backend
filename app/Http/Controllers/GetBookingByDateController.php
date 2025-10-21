@@ -4,27 +4,24 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
+use App\Http\Resources\BookingResourceByDate;
+use App\Repositories\Book\BookRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class GetBookingByDateController extends Controller
 {
-
+    public function __construct(public BookRepository $bookRepository)
+    {
+    }
     public function get(Request $request): JsonResponse
     {
-        $date = $request->query('date');
-        $saunaId = $request->query('sauna_id');
-
-        $start = $date . ' 00:00:00';
-        $end = $date . ' 23:59:59';
-
-        $bookings = Book::where('sauna_id', $saunaId)
-            ->whereBetween('start_time', [$start, $end])
-            ->get();
-
-        return response()->json(['bookings' => $bookings]);
+        return response()->json
+        (
+            BookingResourceByDate::collection($this->bookRepository
+                ->getBookingsByDateAndSauna($request->query('date'), $request->query('sauna_id')))
+        );
     }
 }
 

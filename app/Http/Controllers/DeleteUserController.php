@@ -12,8 +12,7 @@ class DeleteUserController extends Controller
 {
     public function delete(int $userId): Response
     {
-        $user = User::find($userId);
-        $user->delete();
+        User::find($userId)->delete();
         return response()->noContent();
     }
 }

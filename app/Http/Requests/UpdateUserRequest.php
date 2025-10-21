@@ -15,12 +15,12 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'       => 'required|string|min:2|max:255',
-            'lastName'   => 'nullable|string|max:255',
+            'name' => 'required|string|min:2|max:255',
+            'lastName' => 'nullable|string|max:255',
             'middleName' => 'nullable|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
-            'phone'      => 'nullable|string|max:20',
-            'address'    => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
         ];
     }
 }

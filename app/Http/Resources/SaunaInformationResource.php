@@ -16,10 +16,10 @@ class SaunaInformationResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
+            'id' => $this->resource->id,
+            'name' => $this->resource->name,
             'description' => $this->resource->describe,
-            'pictures' => json_decode($this->picture, true),
+            'pictures' => json_decode($this->resource->picture, true),
         ];
     }
 }

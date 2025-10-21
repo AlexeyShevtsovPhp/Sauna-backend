@@ -9,7 +9,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class RefreshHeaderRequest extends FormRequest
 {
     /**
-     *
      * @return bool
      */
     public function authorize(): bool
@@ -18,7 +17,6 @@ class RefreshHeaderRequest extends FormRequest
     }
 
     /**
-     *
      * @return array
      */
     public function rules(): array
@@ -29,14 +27,10 @@ class RefreshHeaderRequest extends FormRequest
     }
 
     /**
-     * Сообщения об ошибках валидации.
-     *
      * @return array
      */
     public function messages(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

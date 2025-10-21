@@ -10,6 +10,7 @@ use App\Http\Controllers\GetSaunaInfoController;
 use App\Http\Controllers\GetUserInfoController;
 use App\Http\Controllers\GetUserListController;
 use App\Http\Controllers\SaunaListController;
+use App\Http\Controllers\UpdateSaunaDataController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\UserUpdateController;
@@ -20,7 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profileInfo', [GetUserInfoController::class, 'profileInfo']);
     Route::get('/profileInfo4Admin/{userId}', [GetUserInfoController::class, 'profileInfo4Admin']);
     Route::get('/saunaInfo/{id}', [GetSaunaInfoController::class, 'get']);
-    Route::get('/coordinates/{id}', [GetSaunaInfoController::class, 'receive']);
+    Route::get('/coordinates/{id}', [GetSaunaInfoController::class, 'map']);
     Route::post('/bookings', [BookSaunaController::class, 'book']);
     Route::delete('/deleteBook/{bookingId}', [BookSaunaController::class, 'remove']);
     Route::get('/bookDateInfo', [GetBookingByDateController::class, 'get']);
@@ -33,8 +34,11 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('/userList', [GetUserListController::class, 'get']);
     Route::delete('/user/delete/{userId}', [DeleteUserController::class, 'delete']);
+    Route::delete('/deleteSaunaPhoto', [UpdateSaunaDataController::class, 'deletePhoto']);
     Route::put('/user/block/{userId}', [BlockUserController::class, 'block']);
     Route::put('/user/unblock/{userId}', [BlockUserController::class, 'unblock']);
+    Route::put('/sauna/update', [UpdateSaunaDataController::class, 'update']);
+    Route::post('/uploadSaunaPhoto', [UpdateSaunaDataController::class, 'addPhoto']);
 });
 
 Route::post('/login', [UserLoginController::class, 'login']);

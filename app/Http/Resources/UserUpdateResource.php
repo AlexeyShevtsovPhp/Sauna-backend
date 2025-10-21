@@ -11,7 +11,6 @@ class UserUpdateResource extends JsonResource
     public function toArray($request): array
     {
         JsonResource::withoutWrapping();
-
         return [
             'id' => $this->resource->id,
             'name' => $this->resource->name,

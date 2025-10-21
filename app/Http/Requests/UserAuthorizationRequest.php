@@ -15,7 +15,6 @@ class UserAuthorizationRequest extends FormRequest
     }
 
     /**
-     *
      * @return array<string, ValidationRule|array|string>
      */
 
@@ -28,7 +27,6 @@ class UserAuthorizationRequest extends FormRequest
     }
 
     /**
-     *
      * @return string[]
      */
     public function messages(): array

@@ -14,22 +14,18 @@ class GetProfileBookingController extends Controller
 {
     public function get(): JsonResponse
     {
-        $user = Auth::user();
-
-        $bookings = Book::with('sauna')
-            ->where('user_id', $user->id)
-            ->get();
-
-        return BookingProfileResource::collection($bookings)->response();
+        return BookingProfileResource::collection(Book::with('sauna')
+            ->where('user_id', Auth::user()->id)
+            ->get())
+            ->response();
     }
 
     public function book4Admin($userId): JsonResponse
     {
-        $bookings = Book::with('sauna')
+        return BookingProfileResource::collection(Book::with('sauna')
             ->where('user_id', $userId)
-            ->get();
-
-        return BookingProfileResource::collection($bookings)->response();
+            ->get())
+            ->response();
     }
 }
 

@@ -14,12 +14,10 @@ class GetSaunaInfoController extends Controller
 {
     public function get(int $id): JsonResponse
     {
-        return response()->json([
-            'data' => new SaunaInformationResource(Sauna::find($id)),
-        ]);
+        return response()->json([new SaunaInformationResource(Sauna::find($id)),]);
     }
 
-    public function receive(int $id): JsonResponse
+    public function map(int $id): JsonResponse
     {
         return response()->json(new SaunaCoordinatesResource(Sauna::find($id)));
     }

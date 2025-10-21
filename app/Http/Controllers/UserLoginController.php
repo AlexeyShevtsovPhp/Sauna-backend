@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\UserAuthorizationRequest;
 use App\Http\Resources\UserUpdateResource;
 use App\Models\User;

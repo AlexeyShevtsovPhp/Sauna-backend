@@ -15,7 +15,6 @@ class UserRegistrationRequest extends FormRequest
     }
 
     /**
-     *
      * @return array<string, ValidationRule|array|string>
      */
 

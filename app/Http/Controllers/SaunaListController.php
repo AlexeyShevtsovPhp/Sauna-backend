@@ -19,8 +19,6 @@ class SaunaListController extends Controller
 
     public function get(): AnonymousResourceCollection
     {
-        $categories = Sauna::query()->get();
-
-        return SaunaResource::collection($categories);
+        return SaunaResource::collection(Sauna::query()->get());
     }
 }

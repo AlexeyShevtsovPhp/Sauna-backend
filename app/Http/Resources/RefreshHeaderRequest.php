@@ -15,6 +15,6 @@ class RefreshHeaderRequest extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return ['avatar'  => asset('storage/' . $this->avatar)];
+        return ['avatar'  => asset('storage/' . $this->resource->avatar)];
     }
 }
