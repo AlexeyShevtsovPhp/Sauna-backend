@@ -19,7 +19,11 @@ class UserRepositoryImplement implements UserRepository
     public function unblockUser(int $userId): bool
     {
         $user = User::find($userId);
-        return $user && ($user->blocked = false) && $user->save();
+        if (!$user) {
+            return false;
+        }
+        $user->blocked = false;
+        return $user->save();
     }
 
     public function createUser(array $data): User
