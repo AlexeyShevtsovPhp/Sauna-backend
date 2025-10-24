@@ -11,7 +11,7 @@ class UserNameAndAvatarUpdated implements ShouldBroadcast
 {
     use Dispatchable, SerializesModels;
 
-    public $userId;
+    public int $userId;
     public $name;
     public $avatar;
 

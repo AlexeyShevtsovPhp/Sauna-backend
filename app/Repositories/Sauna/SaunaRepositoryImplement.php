@@ -22,4 +22,16 @@ class SaunaRepositoryImplement implements SaunaRepository
 
         return $sauna->save();
     }
+
+    public function sortBy($sortBy = 'name')
+    {
+        if ($sortBy === 'standard') {
+            return Sauna::all();
+        }
+        if ($sortBy === 'rating') {
+            return Sauna::orderBy('rating', 'desc')->get();
+        }
+
+        return Sauna::orderBy($sortBy)->get();
+    }
 }

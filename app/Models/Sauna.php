@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
 class Sauna extends Model
@@ -16,6 +17,11 @@ class Sauna extends Model
     use HasFactory;
     use Notifiable;
     public $timestamps = false;
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     public static function updateSaunaPhoto($saunaId, $file): string
     {

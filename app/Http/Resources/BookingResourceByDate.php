@@ -21,6 +21,7 @@ class BookingResourceByDate extends JsonResource
             'start_time' => $this->resource->start_time,
             'end_time' => $this->resource->end_time,
             'created_at' => $this->resource->created_at,
+            'blocked' => $this->resource->blocked,
         ];
     }
 }

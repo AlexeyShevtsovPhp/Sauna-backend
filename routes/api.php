@@ -3,6 +3,7 @@
 use App\Http\Controllers\AvatarUploadController;
 use App\Http\Controllers\BlockUserController;
 use App\Http\Controllers\BookSaunaController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DeleteUserController;
 use App\Http\Controllers\GetBookingByDateController;
 use App\Http\Controllers\GetProfileBookingController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\GetSaunaInfoController;
 use App\Http\Controllers\GetUserInfoController;
 use App\Http\Controllers\GetUserListController;
 use App\Http\Controllers\SaunaListController;
+use App\Http\Controllers\SaunaRateController;
+use App\Http\Controllers\SortDataController;
 use App\Http\Controllers\UpdateSaunaDataController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegistrationController;
@@ -29,6 +32,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile/saunas/{userId}', [GetProfileBookingController::class, 'book4Admin']);
     Route::post('/user/update', [UserUpdateController::class, 'update']);
     Route::post('/uploadAvatar', [AvatarUploadController::class, 'upload']);
+    Route::post('/saunas/rate', [SaunaRateController::class, 'rate']);
+    Route::post('/comments/{saunaId}', [CommentController::class, 'create']);
+    Route::get('/comments/get/{saunaId}', [CommentController::class, 'get']);
+    Route::get('/saunas/sort', [SortDataController::class, 'sort']);
 });
 
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {

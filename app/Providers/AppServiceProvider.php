@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use App\Repositories\Book\BookRepository;
 use App\Repositories\Book\BookRepositoryImplement;
+use App\Repositories\Comment\CommentRepository;
+use App\Repositories\Comment\CommentRepositoryImplement;
+use App\Repositories\Rate\RateRepository;
+use App\Repositories\Rate\RateRepositoryImplement;
 use App\Repositories\Sauna\SaunaRepository;
 use App\Repositories\Sauna\SaunaRepositoryImplement;
 use App\Repositories\User\UserRepository;
@@ -19,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SaunaRepository::class, SaunaRepositoryImplement::class);
         $this->app->bind(BookRepository::class, BookRepositoryImplement::class);
         $this->app->bind(UserRepository::class, UserRepositoryImplement::class);
+        $this->app->bind(RateRepository::class, RateRepositoryImplement::class);
+        $this->app->bind(CommentRepository::class, CommentRepositoryImplement::class);
     }
 
     public function boot(): void

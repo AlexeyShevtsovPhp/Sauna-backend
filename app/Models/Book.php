@@ -15,6 +15,11 @@ class Book extends Model
         'user_id',
         'start_time',
         'end_time',
+        'blocked',
+        'paid',
+        'lowPrice',
+        'highPrice',
+        'size',
     ];
 
     public function sauna(): BelongsTo
